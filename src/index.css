@@ -1,0 +1,399 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    background: #FCF8F8 !important;
+    background-color: #FCF8F8 !important;
+  }
+
+  :root {
+    /* Pink Palette - Solid Colors Only */
+    --pink-lightest: #FCF8F8;
+    --pink-light: #FBEFEF;
+    --pink-medium: #F9DFDF;
+    --pink-coral: #F5AFAF;
+    --text-dark: #7C2D2D;
+    --text-medium: #8B3A3A;
+    --white: #FFFFFF;
+    
+    /* Keeping old variable names for backwards compatibility */
+    --primary-brown: #F5AFAF;
+    --primary-brown-light: #F9DFDF;
+    --primary-brown-dark: #7C2D2D;
+    --off-white: #FCF8F8;
+    --warm-white: #FBEFEF;
+    --light-gray: #F9DFDF;
+    
+    /* Original colors mapped to new palette */
+    --beacon-blue: #F5AFAF;
+    --meringue: #FBEFEF;
+    --stalactite: #F9DFDF;
+    --moondrop-grapes: #7C2D2D;
+    
+    /* Derived colors */
+    --beacon-blue-light: #F9DFDF;
+    --beacon-blue-dark: #8B3A3A;
+    --moondrop-grapes-light: #F5AFAF;
+    --moondrop-grapes-dark: #7C2D2D;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    background: #FCF8F8 !important;
+    background-color: #FCF8F8 !important;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #7C2D2D;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    background: #FCF8F8 !important;
+    background-color: #FCF8F8 !important;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* Utility untuk spacing dengan fixed navbar */
+  .navbar-offset {
+    padding-top: 6rem; /* Jarak lebih dekat dengan navbar */
+  }
+  
+  .section-offset {
+    scroll-margin-top: 2rem; /* Untuk smooth scroll ke section - Home & About Me */
+  }
+
+  .section-offset-large {
+    scroll-margin-top: 3rem; /* Untuk section lain yang perlu jarak lebih dekat seperti Experience */
+  }
+
+  /* Section spacing utilities */
+  .section-spacing {
+    margin-top: 8rem; /* 128px - Jarak standar antar section */
+    margin-bottom: 4rem; /* 64px - Bottom margin */
+  }
+
+  .section-spacing-large {
+    margin-top: 12rem; /* 192px - Jarak besar untuk section khusus */
+    margin-bottom: 6rem; /* 96px - Bottom margin besar */
+  }
+
+  /* Custom color utilities */
+  .text-primary-brown { color: var(--primary-brown); }
+  .text-primary-brown-light { color: var(--primary-brown-light); }
+  .text-primary-brown-dark { color: var(--primary-brown-dark); }
+  .text-cream { color: var(--cream); }
+  .text-off-white { color: var(--off-white); }
+  .text-warm-white { color: var(--warm-white); }
+  .text-charcoal { color: var(--charcoal); }
+  
+  .bg-primary-brown { background-color: var(--primary-brown); }
+  .bg-primary-brown-light { background-color: var(--primary-brown-light); }
+  .bg-primary-brown-dark { background-color: var(--primary-brown-dark); }
+  .bg-cream { background-color: var(--cream); }
+  .bg-off-white { background-color: var(--off-white); }
+  .bg-warm-white { background-color: var(--warm-white); }
+  .bg-charcoal { background-color: var(--charcoal); }
+  
+  .border-primary-brown { border-color: var(--primary-brown); }
+  .border-primary-brown-light { border-color: var(--primary-brown-light); }
+  .border-primary-brown-dark { border-color: var(--primary-brown-dark); }
+  .border-cream { border-color: var(--cream); }
+  .border-light-gray { border-color: var(--light-gray); }
+  
+  /* Button Active States */
+  .btn-primary-brown:active,
+  .btn-primary-brown:focus {
+    background-color: var(--primary-brown) !important;
+    color: white !important;
+    border-color: var(--primary-brown) !important;
+  }
+  
+  .btn-primary-brown:active {
+    background-color: var(--primary-brown-dark) !important;
+    transform: scale(0.95);
+  }
+  
+  /* Focus ring for accessibility */
+  .btn-primary-brown:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.4);
+  }
+  
+  /* Original color utilities maintained for compatibility */
+  .text-beacon-blue { color: var(--beacon-blue); }
+  .text-meringue { color: var(--meringue); }
+  .text-stalactite { color: var(--stalactite); }
+  .text-moondrop-grapes { color: var(--moondrop-grapes); }
+  
+  .bg-beacon-blue { background-color: var(--beacon-blue); }
+  .bg-meringue { background-color: var(--meringue); }
+  .bg-stalactite { background-color: var(--stalactite); }
+  .bg-moondrop-grapes { background-color: var(--moondrop-grapes); }
+  
+  .border-beacon-blue { border-color: var(--beacon-blue); }
+  .border-meringue { border-color: var(--meringue); }
+  .border-stalactite { border-color: var(--stalactite); }
+  .border-moondrop-grapes { border-color: var(--moondrop-grapes); }
+  
+  /* Button specific styles for psychology theme */
+  .btn-explore-portfolio {
+    border-color: var(--primary-brown) !important;
+    color: var(--primary-brown) !important;
+    background-color: transparent !important;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-explore-portfolio:hover,
+  .btn-explore-portfolio:focus,
+  .btn-explore-portfolio:active {
+    background-color: var(--primary-brown) !important;
+    color: white !important;
+    border-color: var(--primary-brown) !important;
+  }
+  
+  .btn-explore-portfolio:not(:hover):not(:focus):not(:active) {
+    background-color: transparent !important;
+    color: var(--primary-brown) !important;
+  }
+
+  /* Removed gradient utilities - using solid colors only */
+}
+
+/* Override BlurText flex layout untuk text justify */
+div[style*="textAlign: justify"] p {
+  display: block !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
+
+div[style*="textAlign: justify"] span {
+  display: inline !important;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Portfolio Section Enhancements */
+.portfolio-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-card img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Experience Section Enhancements */
+.experience-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+}
+
+.experience-card img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-card:hover img {
+  transform: scale(1.05);
+}
+
+.experience-card .category-badge {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.stats-card {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth gradient backgrounds */
+.psychology-gradient {
+  background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 50%, #faf9f7 100%);
+}
+
+.card-gradient-overlay {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 243, 240, 0.6) 100%);
+}
+
+/* Button hover effects */
+.portfolio-button {
+  background: linear-gradient(135deg, #7DD3FC, #A5B4FC);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-button:hover {
+  background: linear-gradient(135deg, #6366F1, #A5B4FC);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(165, 180, 252, 0.4);
+}
+
+/* Modern About Section Animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(5deg); 
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-animation-reverse {
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Modern Glass Morphism Effects */
+.glass-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+}
+
+/* Gradient Text Effects */
+.gradient-text-primary {
+  background: linear-gradient(135deg, #6366F1 0%, #A5B4FC 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animated Borders */
+.animated-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(165, 180, 252, 0.5), rgba(178, 245, 234, 0.4));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: subtract;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: source-out;
+}
+
+/* Modern Hover Interactions */
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Pulse Animation for Interactive Elements */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+}
+
+.pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Fade In Animation for Tab Content */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Modern Typography Enhancements */
+.text-balanced {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Enhanced Focus States */
+.focus-ring:focus-visible {
+  outline: 2px solid rgba(139, 115, 85, 0.6);
+  outline-offset: 2px;
+  border-radius: 8px;
+}

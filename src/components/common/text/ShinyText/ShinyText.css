@@ -1,0 +1,8 @@
+.shiny-text {
+  color: #F5AFAF; /* Coral pink */
+  display: inline-block;
+}
+
+.shiny-text.disabled {
+  animation: none;
+}

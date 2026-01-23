@@ -1,0 +1,207 @@
+/* CurvedLoop Responsive Styles - Full Width */
+.curved-loop-container {
+  width: 100vw;
+  padding: 2rem 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: none;
+}
+
+.curved-loop-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  overflow: hidden;
+  aspect-ratio: 100/8;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  max-width: none;
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .curved-loop-container {
+    padding: 3rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: 3.5rem;
+    aspect-ratio: 100/7;
+  }
+}
+
+/* Desktop */
+@media (max-width: 1280px) {
+  .curved-loop-container {
+    padding: 2rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: 3.5rem;
+    aspect-ratio: 100/8;
+  }
+}
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+  .curved-loop-container {
+    padding: 1.5rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: clamp(3rem, 4vw, 4.5rem);
+    aspect-ratio: 100/9;
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+  .curved-loop-container {
+    padding: 1.25rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    aspect-ratio: 100/10;
+    min-height: 50px;
+  }
+}
+
+/* Large Mobile */
+@media (max-width: 640px) {
+  .curved-loop-container {
+    padding: 1rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    aspect-ratio: 100/11;
+    min-height: 45px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .curved-loop-container {
+    padding: 0.75rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: clamp(4.5rem, 8vw, 3rem);
+    aspect-ratio: 100/12;
+    min-height: 40px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .curved-loop-container {
+    padding: 0.5rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: clamp(4rem, 9vw, 2.5rem);
+    aspect-ratio: 100/13;
+    min-height: 35px;
+  }
+}
+
+/* Landscape orientations */
+@media (max-height: 500px) and (orientation: landscape) {
+  .curved-loop-container {
+    padding: 0.5rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: clamp(1.5rem, 4vh, 2.5rem);
+    aspect-ratio: 100/6;
+    min-height: 30px;
+  }
+}
+
+/* Tablet Landscape specific */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .curved-loop-svg {
+    font-size: clamp(3rem, 5vw, 4rem);
+    aspect-ratio: 100/8;
+  }
+}
+
+/* Mobile Landscape specific */
+@media (max-width: 767px) and (orientation: landscape) {
+  .curved-loop-container {
+    padding: 0.25rem 0;
+  }
+  
+  .curved-loop-svg {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    aspect-ratio: 100/5;
+    min-height: 25px;
+  }
+}
+
+/* Performance and visual enhancements */
+.curved-loop-svg text {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* High DPI screens adjustments */
+@media (min-resolution: 192dpi), (-webkit-min-device-pixel-ratio: 2) {
+  .curved-loop-svg {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .curved-loop-svg {
+    animation: none;
+  }
+  
+  .curved-loop-container * {
+    transition: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .curved-loop-container {
+    padding: 1rem 0;
+    page-break-inside: avoid;
+  }
+  
+  .curved-loop-svg {
+    font-size: 2rem;
+    color: #000 !important;
+  }
+}
+
+/* Prevent horizontal scrollbar */
+body, html {
+  overflow-x: hidden !important;
+}
+
+.curved-loop-container {
+  box-sizing: border-box;
+}
+
+/* Ensure parent containers don't cause overflow */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+}
