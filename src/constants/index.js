@@ -11,7 +11,7 @@ export const COLORS = {
 export const SOCIAL_LINKS = {
   instagram: 'https://instagram.com/nawraadn',
   linkedin: 'https://www.linkedin.com/in/nawra-darmanto-389646373/',
-  email: 'mailto:nawra.danisha@gmail.com',
+  email: 'mailto:nawradanishad@gmail.com',
 };
 
 export const NAVIGATION_ITEMS = [

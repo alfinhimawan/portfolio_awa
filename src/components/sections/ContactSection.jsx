@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 import ShinyText from "../common/text/ShinyText/ShinyText";
 import BlurText from "../common/text/BlurText/BlurText";
 import { SOCIAL_LINKS } from "../../constants";
@@ -52,13 +53,41 @@ const ContactSection = () => {
     e.preventDefault();
     setFormStatus('sending');
     
-    setTimeout(() => {
+    try {
+      // EmailJS configuration
+      const serviceId = 'service_ed5399b';
+      const templateId = 'template_63fkxlp';
+      const publicKey = 'LYegKLnwxjpcLXnLJ'; 
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
       setFormStatus('sent');
       setTimeout(() => {
         setFormStatus('idle');
         setFormData({ name: '', email: '', subject: '', message: '' });
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      
+      // Show detailed error alert
+      const errorMessage = error.text || error.message || 'Unknown error';
+      alert(`❌ Failed to send email!\n\nError: ${errorMessage}\n\nDetails:\n- Service ID: ${serviceId}\n- Template ID: ${templateId}\n- Public Key: ${publicKey.substring(0, 8)}...`);
+      
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 3000);
+    }
   };
 
   useEffect(() => {
