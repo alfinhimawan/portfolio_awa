@@ -10,7 +10,7 @@ export const COLORS = {
 
 export const SOCIAL_LINKS = {
   instagram: 'https://instagram.com/nawraadn',
-  linkedin: 'https://linkedin.com/in/nawradanisha',
+  linkedin: 'https://www.linkedin.com/in/nawra-darmanto-389646373/',
   email: 'mailto:nawradanisha@gmail.com',
 };
 
