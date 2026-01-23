@@ -118,10 +118,10 @@ Sebuah website portfolio modern dan responsif untuk mahasiswa Psikologi Universi
 
 4. **Buka browser**
    ```
-   http://localhost:5173/portofolio/
+   http://localhost:5173/
    ```
 
-> **Note:** Base path `/portofolio/` dikonfigurasi di `vite.config.js` untuk deployment
+> **Note:** Base path `/` untuk deployment di Vercel/Netlify. Ubah ke `/portofolio/` jika deploy ke GitHub Pages dengan repo name.
 
 ## 📁 Project Structure
 
@@ -181,7 +181,7 @@ portfolio_awa/
 ├── index.html
 ├── package.json
 ├── README.md
-└── vite.config.js              # Vite config (base: /portofolio/)
+└── vite.config.js              # Vite config (base: /)
 ```
 
 ## 🎨 Customization
@@ -311,9 +311,10 @@ npm run preview      # Preview production build
 ```
 
 ### Deployment Notes
-- Base URL configured as `/portofolio/` in `vite.config.js`
+- Base URL configured as `/` in `vite.config.js` (root path untuk Vercel/Netlify)
 - Static assets served from `public/assets/`
 - Build output optimized for performance
+- Untuk GitHub Pages: ubah base ke `/<repo-name>/` di vite.config.js
 
 ## 🌐 Browser Support
 
