@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import ShinyText from "../common/text/ShinyText/ShinyText";
 import BlurText from "../common/text/BlurText/BlurText";
-import { SOCIAL_LINKS } from "../../constants";
+import { SOCIAL_LINKS, COLORS } from "../../constants";
 import {
   FiMail,
   FiPhone,
@@ -124,7 +124,7 @@ const ContactSection = () => {
       description: "Send me a message anytime",
       action: copyEmail,
       actionText: copiedEmail ? "Copied!" : "Copy Email",
-      color: "#F9DFDF"
+      color: COLORS.primaryLight
     },
     {
       icon: FiInstagram,
@@ -133,7 +133,7 @@ const ContactSection = () => {
       description: "Connect with me on social",
       action: () => window.open(SOCIAL_LINKS.instagram, "_blank"),
       actionText: "Follow",
-      color: "#F5AFAF"
+      color: COLORS.primary
     },
     {
       icon: FiLinkedin,
@@ -142,7 +142,7 @@ const ContactSection = () => {
       description: "Professional networking",
       action: () => window.open(SOCIAL_LINKS.linkedin, "_blank"),
       actionText: "Connect",
-      color: "#F9DFDF"
+      color: COLORS.primaryLight
     },
     {
       icon: FiMapPin,
@@ -150,7 +150,7 @@ const ContactSection = () => {
       value: "Jakarta, Indonesia",
       description: "GMT+7 Timezone",
       actionText: "View Map",
-      color: "#F5AFAF"
+      color: COLORS.primary
     }
   ];
 
@@ -164,13 +164,13 @@ const ContactSection = () => {
         <div 
           className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-4 blur-3xl float-animation"
           style={{ 
-            backgroundColor: '#F9DFDF'
+            backgroundColor: COLORS.primaryLight
           }}
         />
         <div 
           className="absolute bottom-1/3 right-1/4 w-64 h-64 rounded-full opacity-3 blur-2xl float-animation-reverse"
           style={{ 
-            backgroundColor: '#F5AFAF'
+            backgroundColor: COLORS.primary
           }}
         />
       </div>
@@ -179,25 +179,31 @@ const ContactSection = () => {
         <div className={`text-center mb-8 md:mb-12 lg:mb-16 transition-all duration-1000 ${
           isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
         }`}>
-          <div className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full bg-[#F9DFDF] border border-[#F5AFAF] shadow-sm mb-4 md:mb-6 lg:mb-8">
+          <div 
+            className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-sm mb-4 md:mb-6 lg:mb-8"
+            style={{
+              backgroundColor: COLORS.primaryLight,
+              border: `1px solid ${COLORS.primary}`
+            }}
+          >
             <div className="relative">
-              <div className="w-2 h-2 rounded-full bg-[#F5AFAF] animate-pulse"></div>
-              <div className="absolute inset-0 w-2 h-2 rounded-full bg-[#F5AFAF] animate-ping opacity-30"></div>
+              <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.primary }}></div>
+              <div className="absolute inset-0 w-2 h-2 rounded-full animate-ping opacity-30" style={{ backgroundColor: COLORS.primary }}></div>
             </div>
-            <span className="text-sm font-semibold text-[#7C2D2D]">
+            <span className="text-sm font-semibold" style={{ color: COLORS.primaryDark }}>
               Get In Touch
             </span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-            <span className="text-[#7C2D2D]">Let's </span>
-            <span className="text-[#F5AFAF] relative">
+            <span style={{ color: COLORS.primaryDark }}>Let's </span>
+            <span className="relative" style={{ color: COLORS.primary }}>
               Connect
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-[#F5AFAF] rounded-full opacity-30"></div>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 rounded-full opacity-30" style={{ backgroundColor: COLORS.primary }}></div>
             </span>
           </h1>
           
-          <p className="text-base sm:text-lg md:text-xl text-[#7C2D2D] max-w-3xl mx-auto leading-relaxed px-2">
+          <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed px-2" style={{ color: COLORS.primaryDark }}>
             Have a project or collaboration idea? Send me a message!
           </p>
         </div>
@@ -207,13 +213,13 @@ const ContactSection = () => {
             isVisible ? "opacity-100 transform translate-x-0" : "opacity-0 transform -translate-x-10"
           }`}>
             <div className="glass-card p-4 sm:p-6 md:p-8 rounded-xl md:rounded-2xl">
-              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6" style={{ color: "#F5AFAF" }}>
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6" style={{ color: COLORS.primary }}>
                 Send a Message
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
                 <div>
-                  <label className="block text-sm font-semibold text-[#7C2D2D] mb-2">
+                  <label className="block text-sm font-semibold mb-2" style={{ color: COLORS.primaryDark }}>
                     Name
                   </label>
                   <input
@@ -222,16 +228,17 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300 bg-[#FBEFEF]"
+                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300"
                     style={{
-                      border: '1px solid #F9DFDF'
+                      backgroundColor: COLORS.white,
+                      border: `1px solid ${COLORS.primaryLight}`
                     }}
                     placeholder="Your full name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-[#7C2D2D] mb-2">
+                  <label className="block text-sm font-semibold mb-2" style={{ color: COLORS.primaryDark }}>
                     Email
                   </label>
                   <input
@@ -240,16 +247,17 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300 bg-[#FBEFEF]"
+                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300"
                     style={{
-                      border: '1px solid #F9DFDF'
+                      backgroundColor: COLORS.white,
+                      border: `1px solid ${COLORS.primaryLight}`
                     }}
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-[#7C2D2D] mb-2">
+                  <label className="block text-sm font-semibold mb-2" style={{ color: COLORS.primaryDark }}>
                     Subject
                   </label>
                   <input
@@ -258,16 +266,17 @@ const ContactSection = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300 bg-[#FBEFEF]"
+                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300"
                     style={{
-                      border: '1px solid #F9DFDF'
+                      backgroundColor: COLORS.white,
+                      border: `1px solid ${COLORS.primaryLight}`
                     }}
                     placeholder="What's this about?"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-[#7C2D2D] mb-2">
+                  <label className="block text-sm font-semibold mb-2" style={{ color: COLORS.primaryDark }}>
                     Message
                   </label>
                   <textarea
@@ -276,9 +285,10 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     required
                     rows={4}
-                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300 resize-none bg-[#FBEFEF]"
+                    className="w-full px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg md:rounded-xl glass-card focus-ring transition-all duration-300 resize-none"
                     style={{
-                      border: '1px solid #F9DFDF'
+                      backgroundColor: COLORS.white,
+                      border: `1px solid ${COLORS.primaryLight}`
                     }}
                     placeholder="Tell me about your project or idea..."
                   />
@@ -291,8 +301,8 @@ const ContactSection = () => {
                   style={{
                     backgroundColor: formStatus === 'sent' 
                       ? '#10B981'
-                      : '#F5AFAF',
-                    color: 'white',
+                      : COLORS.primary,
+                    color: COLORS.white,
                     boxShadow: '0 8px 25px rgba(245, 175, 175, 0.3)'
                   }}
                 >
@@ -315,27 +325,28 @@ const ContactSection = () => {
             isVisible ? "opacity-100 transform translate-x-0" : "opacity-0 transform translate-x-10"
           }`}>
             <div className="glass-card p-4 sm:p-6 md:p-8 rounded-xl md:rounded-2xl">
-              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6" style={{ color: "#F5AFAF" }}>
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6" style={{ color: COLORS.primary }}>
                 Connect With Me
               </h3>
 
               <div className="space-y-4">
                 <div
-                  className="glass-card p-3 md:p-4 rounded-lg md:rounded-xl cursor-pointer hover-lift transition-all duration-300 bg-[#FBEFEF]"
+                  className="glass-card p-3 md:p-4 rounded-lg md:rounded-xl cursor-pointer hover-lift transition-all duration-300"
                   onClick={copyEmail}
                   style={{
-                    border: '1px solid #F9DFDF'
+                    backgroundColor: COLORS.white,
+                    border: `1px solid ${COLORS.primaryLight}`
                   }}
                 >
                   <div className="flex items-center gap-3 md:gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center text-white bg-[#F9DFDF]">
-                      <FiMail className="w-5 h-5 md:w-6 md:h-6" style={{ color: '#F5AFAF' }} />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center" style={{ backgroundColor: COLORS.primaryLight }}>
+                      <FiMail className="w-5 h-5 md:w-6 md:h-6" style={{ color: COLORS.primary }} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-sm md:text-base text-[#7C2D2D]">Email</p>
-                      <p className="text-xs md:text-sm text-[#8B3A3A] truncate">{SOCIAL_LINKS.email.replace('mailto:', '')}</p>
+                      <p className="font-semibold text-sm md:text-base" style={{ color: COLORS.primaryDark }}>Email</p>
+                      <p className="text-xs md:text-sm truncate" style={{ color: COLORS.primaryDarker }}>{SOCIAL_LINKS.email.replace('mailto:', '')}</p>
                     </div>
-                    <div className="text-xs font-medium" style={{ color: '#F5AFAF' }}>
+                    <div className="text-xs font-medium" style={{ color: COLORS.primary }}>
                       {copiedEmail ? 'Copied!' : 'Copy'}
                     </div>
                   </div>
@@ -354,30 +365,31 @@ const ContactSection = () => {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-3 md:p-4 rounded-lg md:rounded-xl glass-card hover-lift transition-all duration-300 bg-[#FBEFEF]"
+                        className="flex items-center gap-3 p-3 md:p-4 rounded-lg md:rounded-xl glass-card hover-lift transition-all duration-300"
                         style={{
-                          border: '1px solid #F9DFDF'
+                          backgroundColor: COLORS.white,
+                          border: `1px solid ${COLORS.primaryLight}`
                         }}
                       >
                         <div 
-                          className="w-10 h-10 rounded-lg flex items-center justify-center text-white"
-                          style={{ backgroundColor: social.color }}
+                          className="w-10 h-10 rounded-lg flex items-center justify-center"
+                          style={{ backgroundColor: social.color, color: COLORS.white }}
                         >
                           <Icon className="w-5 h-5" />
                         </div>
-                        <span className="text-sm font-medium text-[#7C2D2D]">{social.label}</span>
+                        <span className="text-sm font-medium" style={{ color: COLORS.primaryDark }}>{social.label}</span>
                       </a>
                     );
                   })}
                 </div>
 
                 {/* Info */}
-                <div className="mt-6 md:mt-8 p-3 md:p-4 rounded-lg md:rounded-xl bg-[#F9DFDF]">
+                <div className="mt-6 md:mt-8 p-3 md:p-4 rounded-lg md:rounded-xl" style={{ backgroundColor: COLORS.primaryLight }}>
                   <div className="flex items-start gap-3">
-                    <FiMapPin className="w-4 h-4 md:w-5 md:h-5 mt-1" style={{ color: '#F5AFAF' }} />
+                    <FiMapPin className="w-4 h-4 md:w-5 md:h-5 mt-1" style={{ color: COLORS.primary }} />
                     <div>
-                      <p className="font-semibold text-sm md:text-base text-[#7C2D2D] mb-1">Location</p>
-                      <p className="text-xs md:text-sm text-[#8B3A3A]">Jakarta, Indonesia (GMT+7)</p>
+                      <p className="font-semibold text-sm md:text-base mb-1" style={{ color: COLORS.primaryDark }}>Location</p>
+                      <p className="text-xs md:text-sm" style={{ color: COLORS.primaryDarker }}>Jakarta, Indonesia (GMT+7)</p>
                     </div>
                   </div>
                 </div>

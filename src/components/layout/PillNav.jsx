@@ -1,5 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { FiHome, FiUser, FiBriefcase, FiFolder, FiAward, FiMail } from "react-icons/fi";
+
+const iconMap = {
+  FiHome,
+  FiUser,
+  FiBriefcase,
+  FiFolder,
+  FiAward,
+  FiMail,
+};
 
 const PillNav = ({
   logo,
@@ -179,11 +189,15 @@ const PillNav = ({
     if (hamburger) {
       const lines = hamburger.querySelectorAll(".hamburger-line");
       if (newState) {
-        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
+        // Transform to X
+        gsap.to(lines[0], { rotation: 45, y: 7, duration: 0.3, ease });
+        gsap.to(lines[1], { opacity: 0, duration: 0.2, ease });
+        gsap.to(lines[2], { rotation: -45, y: -7, duration: 0.3, ease });
       } else {
+        // Transform back to hamburger
         gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+        gsap.to(lines[1], { opacity: 1, duration: 0.2, ease });
+        gsap.to(lines[2], { rotation: 0, y: 0, duration: 0.3, ease });
       }
     }
 
@@ -241,38 +255,98 @@ const PillNav = ({
   };
 
   return (
-    <div className="fixed top-[1em] z-[1000] w-full left-0 md:w-auto md:left-1/2 md:-translate-x-1/2">
+    <div className="fixed top-0 md:top-[1em] z-[1000] w-full left-0 md:w-auto md:left-1/2 md:-translate-x-1/2">
       <nav
-        className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 backdrop-blur-md shadow-lg rounded-full ${className}`}
+        className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 py-3 md:px-0 md:py-0 backdrop-blur-md shadow-md md:shadow-lg rounded-none md:rounded-full ${className}`}
         aria-label="Primary"
         style={{
           ...cssVars,
-          background: 'rgba(255, 255, 255, 0.8)',
-          border: '2px solid rgba(245, 175, 175, 0.3)',
-          boxShadow: '0 8px 32px rgba(245, 175, 175, 0.15), 0 4px 12px rgba(249, 223, 223, 0.1)'
+          background: 'rgba(255, 255, 255, 0.95)',
+          borderBottom: '1px solid rgba(245, 175, 175, 0.2)',
+          ...(window.innerWidth >= 768 && {
+            border: '2px solid rgba(245, 175, 175, 0.3)',
+            borderBottom: '2px solid rgba(245, 175, 175, 0.3)',
+            boxShadow: '0 8px 32px rgba(245, 175, 175, 0.15), 0 4px 12px rgba(249, 223, 223, 0.1)'
+          })
         }}
       >
-        <a
-          href="#home"
-          aria-label="Home"
-          onMouseEnter={handleLogoEnter}
-          ref={(el) => {
-            logoRef.current = el;
-          }}
-          className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden"
-          style={{
-            width: "var(--nav-h)",
-            height: "var(--nav-h)",
-            background: "#F5AFAF",
-          }}
-        >
-          <img
-            src={logo}
-            alt={logoAlt}
-            ref={logoImgRef}
-            className="w-full h-full object-cover block rounded-full"
-          />
-        </a>
+        {/* Logo - Different for mobile and desktop */}
+        <div className="flex items-center">
+          {/* Mobile: Tilted photo with brand text */}
+          <a
+            href="#home"
+            className="md:hidden flex items-center gap-3"
+          >
+            <div 
+              className="relative"
+              style={{
+                transform: 'rotate(-3deg)',
+                transition: 'transform 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'rotate(0deg) scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'rotate(-3deg)';
+              }}
+            >
+              <img
+                src={logo}
+                alt={logoAlt}
+                className="w-10 h-10 object-cover"
+                style={{
+                  borderRadius: '8px',
+                  border: '2px solid #F5AFAF',
+                  boxShadow: '0 2px 8px rgba(245, 175, 175, 0.3)'
+                }}
+              />
+            </div>
+            <span 
+              className="font-extrabold text-[17px] tracking-tight"
+              style={{ 
+                background: 'linear-gradient(135deg, #F5AFAF 0%, #7C2D2D 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                letterSpacing: '-0.8px'
+              }}
+            >
+              KnowYouNaw
+            </span>
+          </a>
+          
+          {/* Desktop: Tilted photo with border radius */}
+          <a
+            href="#home"
+            aria-label="Home"
+            onMouseEnter={handleLogoEnter}
+            ref={(el) => {
+              logoRef.current = el;
+            }}
+            className="hidden md:inline-flex items-center justify-center"
+          >
+            <div
+              className="relative"
+              style={{
+                transform: 'rotate(-4deg)',
+                transition: 'transform 0.3s ease'
+              }}
+            >
+              <img
+                src={logo}
+                alt={logoAlt}
+                ref={logoImgRef}
+                className="w-[42px] h-[42px] object-cover"
+                style={{
+                  borderRadius: '10px',
+                  border: '2.5px solid #F5AFAF',
+                  boxShadow: '0 4px 12px rgba(245, 175, 175, 0.35)'
+                }}
+              />
+            </div>
+          </a>
+        </div>
 
         <div
           ref={navItemsRef}
@@ -359,51 +433,68 @@ const PillNav = ({
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
-          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative"
+          className="md:hidden flex flex-col items-center justify-center gap-[5px] cursor-pointer p-2 border-0 bg-transparent"
           style={{
-            width: "var(--nav-h)",
-            height: "var(--nav-h)",
-            background: "#F5AFAF",
+            width: "36px",
+            height: "36px",
           }}
         >
           <span
-            className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-[10ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
-            style={{ background: "#FFFFFF" }}
+            className="hamburger-line w-5 h-[2px] rounded origin-center transition-all duration-[10ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            style={{ background: "#7C2D2D" }}
           />
           <span
-            className="hamburger-line w-4 h-0.5 rounded origin-center transition-all duration-[10ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
-            style={{ background: "#FFFFFF" }}
+            className="hamburger-line w-5 h-[2px] rounded origin-center transition-all duration-[10ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            style={{ background: "#7C2D2D" }}
+          />
+          <span
+            className="hamburger-line w-5 h-[2px] rounded origin-center transition-all duration-[10ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            style={{ background: "#7C2D2D" }}
           />
         </button>
       </nav>
 
       <div
         ref={mobileMenuRef}
-        className="md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] z-[998] origin-top backdrop-blur-md"
+        className="md:hidden absolute top-[60px] left-0 right-0 rounded-none z-[998] origin-top backdrop-blur-md"
         style={{
           ...cssVars,
-          background: "rgba(255, 255, 255, 0.95)",
-          border: '2px solid rgba(245, 175, 175, 0.3)',
-          boxShadow: '0 8px 32px rgba(245, 175, 175, 0.2), 0 4px 12px rgba(249, 223, 223, 0.1)'
+          background: "rgba(255, 255, 255, 0.98)",
+          borderBottom: '2px solid rgba(245, 175, 175, 0.2)',
+          boxShadow: '0 8px 24px rgba(245, 175, 175, 0.15)'
         }}
       >
-        <ul className="list-none m-0 p-[3px] flex flex-col gap-[3px]">
+        <ul className="list-none m-0 p-4 flex flex-col gap-0">
           {items.map((item) => {
             const defaultStyle = {
-              background: "rgba(255, 255, 255, 0.7)",
+              background: "transparent",
               color: "#7C2D2D",
+              borderBottom: "1px solid rgba(245, 175, 175, 0.1)"
             };
             const hoverIn = (e) => {
-              e.currentTarget.style.background = "#F5AFAF";
-              e.currentTarget.style.color = "#fff";
+              e.currentTarget.style.background = "rgba(245, 175, 175, 0.1)";
+              e.currentTarget.style.color = "#7C2D2D";
             };
             const hoverOut = (e) => {
-              e.currentTarget.style.background = "rgba(255, 255, 255, 0.7)";
+              e.currentTarget.style.background = "transparent";
               e.currentTarget.style.color = "#7C2D2D";
             };
 
+            const handleClick = (e) => {
+              e.preventDefault();
+              const target = document.querySelector(item.href);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+              // Close menu after navigation
+              setTimeout(() => {
+                setIsMobileMenuOpen(false);
+                toggleMobileMenu();
+              }, 100);
+            };
+
             const linkClasses =
-              "block py-3 px-4 text-[16px] font-medium rounded-[50px] transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)]";
+              "flex items-center gap-3 py-4 px-3 text-[15px] font-medium transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)]";
 
             return (
               <li key={item.href}>
@@ -413,9 +504,12 @@ const PillNav = ({
                   style={defaultStyle}
                   onMouseEnter={hoverIn}
                   onMouseLeave={hoverOut}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={handleClick}
                 >
-                  {item.label}
+                  {item.icon && iconMap[item.icon] && (
+                    <span className="text-lg" style={{ color: '#F5AFAF' }}>{iconMap[item.icon]({ size: 20 })}</span>
+                  )}
+                  <span>{item.label}</span>
                 </a>
               </li>
             );

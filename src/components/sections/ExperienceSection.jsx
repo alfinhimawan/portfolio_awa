@@ -6,20 +6,12 @@ import {
   FaBriefcase, FaLightbulb
 } from "react-icons/fa";
 import { experiences } from "../../constants/data";
+import { COLORS } from "../../constants";
 
 const ExperienceSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const categories = ["All", "Social Media", "Corporate Skill", "Advocational aspect"];
-
-  // Unified color scheme with pink palette - NO GRADIENTS
-  const cardColors = {
-    bg: "bg-[#FBEFEF]",
-    border: "border-[#F9DFDF]",
-    text: "text-[#7C2D2D]",
-    badge: "bg-[#F9DFDF] text-[#8B3A3A]",
-    icon: "text-[#F5AFAF]"
-  };
 
   const getIcon = (id) => {
     const icons = {
@@ -180,25 +172,25 @@ const ExperienceSection = () => {
   return (
     <section className="py-16 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto" id="experience">
       <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F9DFDF] border border-[#F5AFAF] shadow-sm mb-8">
+        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full shadow-sm mb-8" style={{ backgroundColor: COLORS.primaryLight, borderWidth: '1px', borderStyle: 'solid', borderColor: COLORS.primary }}>
           <div className="relative">
-            <div className="w-2 h-2 rounded-full bg-[#F5AFAF] animate-pulse"></div>
-            <div className="absolute inset-0 w-2 h-2 rounded-full bg-[#F5AFAF] animate-ping opacity-30"></div>
+            <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.primary }}></div>
+            <div className="absolute inset-0 w-2 h-2 rounded-full animate-ping opacity-30" style={{ backgroundColor: COLORS.primary }}></div>
           </div>
-          <span className="text-sm font-semibold text-[#7C2D2D]">
+          <span className="text-sm font-semibold" style={{ color: COLORS.primaryDark }}>
             Professional Journey
           </span>
         </div>
         
         <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          <span className="text-[#7C2D2D]">My </span>
-          <span className="text-[#F5AFAF] relative">
+          <span style={{ color: COLORS.primaryDark }}>My </span>
+          <span className="relative" style={{ color: COLORS.primary }}>
             Experience
-            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-[#F5AFAF] rounded-full opacity-30"></div>
+            <div className="absolute -bottom-2 left-0 right-0 h-1 rounded-full opacity-30" style={{ backgroundColor: COLORS.primary }}></div>
           </span>
         </h2>
         
-        <p className="text-xl text-[#7C2D2D] max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: COLORS.primaryDark }}>
           Crafting impactful solutions through diverse roles in psychology, content creation, and organizational development
         </p>
       </div>
@@ -209,13 +201,25 @@ const ExperienceSection = () => {
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`
-              px-5 py-2.5 rounded-full font-semibold transition-all duration-300 text-sm
-              ${selectedCategory === category
-                ? 'bg-[#F5AFAF] text-white shadow-lg scale-105'
-                : 'bg-white text-[#F5AFAF] border border-[#F9DFDF] hover:border-[#F5AFAF] hover:text-[#8B3A3A] hover:shadow-md'
+            className="px-5 py-2.5 rounded-full font-semibold transition-all duration-300 text-sm shadow-lg"
+            style={selectedCategory === category
+              ? { backgroundColor: COLORS.primary, color: COLORS.white, transform: 'scale(1.05)' }
+              : { backgroundColor: COLORS.white, color: COLORS.primary, borderWidth: '1px', borderStyle: 'solid', borderColor: COLORS.primaryLight }
+            }
+            onMouseEnter={(e) => {
+              if (selectedCategory !== category) {
+                e.currentTarget.style.borderColor = COLORS.primary;
+                e.currentTarget.style.color = COLORS.primaryDarker;
+                e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
               }
-            `}
+            }}
+            onMouseLeave={(e) => {
+              if (selectedCategory !== category) {
+                e.currentTarget.style.borderColor = COLORS.primaryLight;
+                e.currentTarget.style.color = COLORS.primary;
+                e.currentTarget.style.boxShadow = 'none';
+              }
+            }}
           >
             {category}
             <span className="ml-2 text-xs opacity-70">
@@ -231,23 +235,24 @@ const ExperienceSection = () => {
           return (
             <div
               key={exp.id}
-              className={`${cardColors.bg} border-2 ${cardColors.border} rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105`}
+              className="rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105"
+              style={{ backgroundColor: COLORS.primaryLighter, borderWidth: '2px', borderStyle: 'solid', borderColor: COLORS.primaryLight }}
             >
               {/* Icon & Year */}
               <div className="flex items-start justify-between mb-4">
-                <div className={`w-12 h-12 rounded-xl bg-[#F5AFAF] flex items-center justify-center text-white text-xl shadow-lg`}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg" style={{ backgroundColor: COLORS.primary, color: COLORS.white }}>
                   {getIcon(exp.id)}
                 </div>
-                <span className={`px-3 py-1 rounded-full text-xs font-bold ${cardColors.badge}`}>
+                <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: COLORS.primaryLight, color: COLORS.primaryDarker }}>
                   {exp.year}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className={`text-lg font-bold ${cardColors.text} mb-1`}>
+              <h3 className="text-lg font-bold mb-1" style={{ color: COLORS.primaryDark }}>
                 {exp.role}
               </h3>
-              <p className="text-[#F5AFAF] font-semibold text-sm mb-4">
+              <p className="font-semibold text-sm mb-4" style={{ color: COLORS.primary }}>
                 {exp.organization}
               </p>
 
@@ -256,7 +261,8 @@ const ExperienceSection = () => {
                 {exp.skills.map((skill, idx) => (
                   <span
                     key={idx}
-                    className={`px-2.5 py-1 ${cardColors.badge} rounded-full text-xs font-medium`}
+                    className="px-2.5 py-1 rounded-full text-xs font-medium"
+                    style={{ backgroundColor: COLORS.primaryLight, color: COLORS.primaryDarker }}
                   >
                     {skill}
                   </span>
@@ -264,8 +270,8 @@ const ExperienceSection = () => {
               </div>
 
               {/* Impact */}
-              <div className={`flex items-center gap-2 text-xs font-semibold ${cardColors.text} pt-3 border-t ${cardColors.border}`}>
-                <div className={`w-2 h-2 rounded-full bg-[#F5AFAF]`}></div>
+              <div className="flex items-center gap-2 text-xs font-semibold pt-3" style={{ color: COLORS.primaryDark, borderTopWidth: '1px', borderTopStyle: 'solid', borderTopColor: COLORS.primaryLight }}>
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS.primary }}></div>
                 <span>{exp.impact}</span>
               </div>
             </div>
@@ -275,49 +281,49 @@ const ExperienceSection = () => {
 
       {/* Stats Summary */}
       <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div className="bg-[#FBEFEF] border-2 border-[#F9DFDF] rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+        <div className="rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300" style={{ backgroundColor: COLORS.primaryLighter, borderWidth: '2px', borderStyle: 'solid', borderColor: COLORS.primaryLight }}>
           <div className="flex justify-center mb-3">
-            <div className="w-12 h-12 rounded-xl bg-[#F5AFAF] flex items-center justify-center text-white text-xl shadow-lg">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg" style={{ backgroundColor: COLORS.primary, color: COLORS.white }}>
               <FaEdit />
             </div>
           </div>
-          <div className="text-4xl font-bold text-[#7C2D2D] mb-2">
+          <div className="text-4xl font-bold mb-2" style={{ color: COLORS.primaryDark }}>
             {experiences.filter(e => e.category === "Social Media").length}
           </div>
-          <div className="text-sm font-semibold text-[#8B3A3A]">Social Media</div>
+          <div className="text-sm font-semibold" style={{ color: COLORS.primaryDarker }}>Social Media</div>
         </div>
-        <div className="bg-[#FBEFEF] border-2 border-[#F9DFDF] rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+        <div className="rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300" style={{ backgroundColor: COLORS.primaryLighter, borderWidth: '2px', borderStyle: 'solid', borderColor: COLORS.primaryLight }}>
           <div className="flex justify-center mb-3">
-            <div className="w-12 h-12 rounded-xl bg-[#F5AFAF] flex items-center justify-center text-white text-xl shadow-lg">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg" style={{ backgroundColor: COLORS.primary, color: COLORS.white }}>
               <FaBriefcase />
             </div>
           </div>
-          <div className="text-4xl font-bold text-[#7C2D2D] mb-2">
+          <div className="text-4xl font-bold mb-2" style={{ color: COLORS.primaryDark }}>
             {experiences.filter(e => e.category === "Corporate Skill").length}
           </div>
-          <div className="text-sm font-semibold text-[#8B3A3A]">Corporate</div>
+          <div className="text-sm font-semibold" style={{ color: COLORS.primaryDarker }}>Corporate</div>
         </div>
-        <div className="bg-[#FBEFEF] border-2 border-[#F9DFDF] rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+        <div className="rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300" style={{ backgroundColor: COLORS.primaryLighter, borderWidth: '2px', borderStyle: 'solid', borderColor: COLORS.primaryLight }}>
           <div className="flex justify-center mb-3">
-            <div className="w-12 h-12 rounded-xl bg-[#F5AFAF] flex items-center justify-center text-white text-xl shadow-lg">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg" style={{ backgroundColor: COLORS.primary, color: COLORS.white }}>
               <FaHandsHelping />
             </div>
           </div>
-          <div className="text-4xl font-bold text-[#7C2D2D] mb-2">
+          <div className="text-4xl font-bold mb-2" style={{ color: COLORS.primaryDark }}>
             {experiences.filter(e => e.category === "Advocational aspect").length}
           </div>
-          <div className="text-sm font-semibold text-[#8B3A3A]">Advocacy</div>
+          <div className="text-sm font-semibold" style={{ color: COLORS.primaryDarker }}>Advocacy</div>
         </div>
-        <div className="bg-[#FBEFEF] border-2 border-[#F9DFDF] rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+        <div className="rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300" style={{ backgroundColor: COLORS.primaryLighter, borderWidth: '2px', borderStyle: 'solid', borderColor: COLORS.primaryLight }}>
           <div className="flex justify-center mb-3">
-            <div className="w-12 h-12 rounded-xl bg-[#F5AFAF] flex items-center justify-center text-white text-xl shadow-lg">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg" style={{ backgroundColor: COLORS.primary, color: COLORS.white }}>
               <FaLightbulb />
             </div>
           </div>
-          <div className="text-4xl font-bold text-[#7C2D2D] mb-2">
+          <div className="text-4xl font-bold mb-2" style={{ color: COLORS.primaryDark }}>
             {experiences.reduce((acc, exp) => acc + exp.skills.length, 0)}
           </div>
-          <div className="text-sm font-semibold text-[#8B3A3A]">Total Skills</div>
+          <div className="text-sm font-semibold" style={{ color: COLORS.primaryDarker }}>Total Skills</div>
         </div>
       </div>
     </section>

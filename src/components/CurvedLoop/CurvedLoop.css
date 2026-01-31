@@ -1,7 +1,7 @@
 /* CurvedLoop Responsive Styles - Full Width */
 .curved-loop-container {
   width: 100vw;
-  padding: 2rem 0;
+  padding: 2rem 0 0.5rem 0;
   margin: 0;
   overflow: hidden;
   position: relative;
@@ -19,7 +19,7 @@
   user-select: none;
   overflow: hidden;
   aspect-ratio: 100/8;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(4rem, 7vw, 6rem);
   font-weight: 700;
   text-transform: uppercase;
   line-height: 1;
@@ -29,7 +29,7 @@
 /* Large Desktop */
 @media (min-width: 1440px) {
   .curved-loop-container {
-    padding: 3rem 0;
+    padding: 2.5rem 0 0.5rem 0;
   }
   
   .curved-loop-svg {
@@ -41,7 +41,7 @@
 /* Desktop */
 @media (max-width: 1280px) {
   .curved-loop-container {
-    padding: 2rem 0;
+    padding: 2rem 0 0.5rem 0;
   }
   
   .curved-loop-svg {
@@ -53,7 +53,7 @@
 /* Tablet Landscape */
 @media (max-width: 1024px) {
   .curved-loop-container {
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 0.5rem 0;
   }
   
   .curved-loop-svg {
@@ -65,39 +65,39 @@
 /* Tablet Portrait */
 @media (max-width: 768px) {
   .curved-loop-container {
-    padding: 1.25rem 0;
+    padding: 1.25rem 0 0.5rem 0;
   }
   
   .curved-loop-svg {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    aspect-ratio: 100/10;
-    min-height: 50px;
+    font-size: clamp(4.5rem, 10vw, 6rem);
+    aspect-ratio: 100/9;
+    min-height: 70px;
   }
 }
 
 /* Large Mobile */
 @media (max-width: 640px) {
   .curved-loop-container {
-    padding: 1rem 0;
+    padding: 1rem 0 0.5rem 0;
   }
   
   .curved-loop-svg {
-    font-size: clamp(2rem, 7vw, 3.5rem);
-    aspect-ratio: 100/11;
-    min-height: 45px;
+    font-size: clamp(4rem, 11vw, 5.5rem);
+    aspect-ratio: 100/10;
+    min-height: 65px;
   }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
   .curved-loop-container {
-    padding: 0.75rem 0;
+    padding: 1rem 0 0.5rem 0;
   }
   
   .curved-loop-svg {
-    font-size: clamp(4.5rem, 8vw, 3rem);
-    aspect-ratio: 100/12;
-    min-height: 40px;
+    font-size: clamp(3.75rem, 12vw, 5rem);
+    aspect-ratio: 100/11;
+    min-height: 60px;
   }
 }
 

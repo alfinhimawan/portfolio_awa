@@ -15,12 +15,12 @@ export const SOCIAL_LINKS = {
 };
 
 export const NAVIGATION_ITEMS = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About Me' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#certificate', label: 'Certificate' },
-  { href: '#contact', label: 'Contact' }
+  { href: '#home', label: 'Home', icon: 'FiHome' },
+  { href: '#about', label: 'About Me', icon: 'FiUser' },
+  { href: '#experience', label: 'Experience', icon: 'FiBriefcase' },
+  { href: '#portfolio', label: 'Portfolio', icon: 'FiFolder' },
+  { href: '#certificate', label: 'Certificate', icon: 'FiAward' },
+  { href: '#contact', label: 'Contact', icon: 'FiMail' }
 ];
 
 export const ANIMATION_DURATION = {

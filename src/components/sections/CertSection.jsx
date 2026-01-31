@@ -5,6 +5,7 @@ import {
 } from "../../hooks/useIntersectionObserver";
 import { FaCertificate, FaAward } from "react-icons/fa";
 import { certificates } from "../../constants/data";
+import { COLORS } from "../../constants";
 
 const CertSection = () => {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -24,60 +25,81 @@ const CertSection = () => {
   const getColorClasses = (color) => {
     const colorMap = {
       brown: {
-        bg: "bg-[#FBEFEF]",
-        border: "border-[#F9DFDF] hover:border-[#F5AFAF]",
-        text: "text-[#7C2D2D]",
-        textLight: "text-[#8B3A3A]",
-        iconBg: "bg-[#F9DFDF]",
-        skillBg: "bg-[#F9DFDF] border-[#F9DFDF] text-[#7C2D2D]",
+        bg: COLORS.primaryLighter,
+        border: COLORS.primaryLight,
+        borderHover: COLORS.primary,
+        text: COLORS.primaryDark,
+        textLight: COLORS.primaryDarker,
+        iconBg: COLORS.primaryLight,
+        skillBg: COLORS.primaryLight,
+        skillBorder: COLORS.primaryLight,
+        skillText: COLORS.primaryDark,
       },
       violet: {
-        bg: "bg-[#FBEFEF]",
-        border: "border-[#F9DFDF] hover:border-[#F5AFAF]",
-        text: "text-[#7C2D2D]",
-        textLight: "text-[#8B3A3A]",
-        iconBg: "bg-[#F9DFDF]",
-        skillBg: "bg-[#F9DFDF] border-[#F9DFDF] text-[#7C2D2D]",
+        bg: COLORS.primaryLighter,
+        border: COLORS.primaryLight,
+        borderHover: COLORS.primary,
+        text: COLORS.primaryDark,
+        textLight: COLORS.primaryDarker,
+        iconBg: COLORS.primaryLight,
+        skillBg: COLORS.primaryLight,
+        skillBorder: COLORS.primaryLight,
+        skillText: COLORS.primaryDark,
       },
       blue: {
-        bg: "bg-[#FBEFEF]",
-        border: "border-[#F9DFDF] hover:border-[#F5AFAF]",
-        text: "text-[#7C2D2D]",
-        textLight: "text-[#8B3A3A]",
-        iconBg: "bg-[#F9DFDF]",
-        skillBg: "bg-[#F9DFDF] border-[#F9DFDF] text-[#7C2D2D]",
+        bg: COLORS.primaryLighter,
+        border: COLORS.primaryLight,
+        borderHover: COLORS.primary,
+        text: COLORS.primaryDark,
+        textLight: COLORS.primaryDarker,
+        iconBg: COLORS.primaryLight,
+        skillBg: COLORS.primaryLight,
+        skillBorder: COLORS.primaryLight,
+        skillText: COLORS.primaryDark,
       },
       emerald: {
-        bg: "bg-[#FBEFEF]",
-        border: "border-[#F9DFDF] hover:border-[#F5AFAF]",
-        text: "text-[#7C2D2D]",
-        textLight: "text-[#8B3A3A]",
-        iconBg: "bg-[#F9DFDF]",
-        skillBg: "bg-[#F9DFDF] border-[#F9DFDF] text-[#7C2D2D]",
+        bg: COLORS.primaryLighter,
+        border: COLORS.primaryLight,
+        borderHover: COLORS.primary,
+        text: COLORS.primaryDark,
+        textLight: COLORS.primaryDarker,
+        iconBg: COLORS.primaryLight,
+        skillBg: COLORS.primaryLight,
+        skillBorder: COLORS.primaryLight,
+        skillText: COLORS.primaryDark,
       },
       amber: {
-        bg: "bg-[#FBEFEF]",
-        border: "border-[#F9DFDF] hover:border-[#F5AFAF]",
-        text: "text-[#7C2D2D]",
-        textLight: "text-[#8B3A3A]",
-        iconBg: "bg-[#F9DFDF]",
-        skillBg: "bg-[#F9DFDF] border-[#F9DFDF] text-[#7C2D2D]",
+        bg: COLORS.primaryLighter,
+        border: COLORS.primaryLight,
+        borderHover: COLORS.primary,
+        text: COLORS.primaryDark,
+        textLight: COLORS.primaryDarker,
+        iconBg: COLORS.primaryLight,
+        skillBg: COLORS.primaryLight,
+        skillBorder: COLORS.primaryLight,
+        skillText: COLORS.primaryDark,
       },
       pink: {
-        bg: "bg-[#FBEFEF]",
-        border: "border-[#F9DFDF] hover:border-[#F5AFAF]",
-        text: "text-[#7C2D2D]",
-        textLight: "text-[#8B3A3A]",
-        iconBg: "bg-[#F9DFDF]",
-        skillBg: "bg-[#F9DFDF] border-[#F9DFDF] text-[#7C2D2D]",
+        bg: COLORS.primaryLighter,
+        border: COLORS.primaryLight,
+        borderHover: COLORS.primary,
+        text: COLORS.primaryDark,
+        textLight: COLORS.primaryDarker,
+        iconBg: COLORS.primaryLight,
+        skillBg: COLORS.primaryLight,
+        skillBorder: COLORS.primaryLight,
+        skillText: COLORS.primaryDark,
       },
       indigo: {
-        bg: "bg-[#FBEFEF]",
-        border: "border-[#F9DFDF] hover:border-[#F5AFAF]",
-        text: "text-[#7C2D2D]",
-        textLight: "text-[#8B3A3A]",
-        iconBg: "bg-[#F9DFDF]",
-        skillBg: "bg-[#F9DFDF] border-[#F9DFDF] text-[#7C2D2D]",
+        bg: COLORS.primaryLighter,
+        border: COLORS.primaryLight,
+        borderHover: COLORS.primary,
+        text: COLORS.primaryDark,
+        textLight: COLORS.primaryDarker,
+        iconBg: COLORS.primaryLight,
+        skillBg: COLORS.primaryLight,
+        skillBorder: COLORS.primaryLight,
+        skillText: COLORS.primaryDark,
       },
     };
     return colorMap[color] || colorMap.brown;
@@ -109,16 +131,19 @@ const CertSection = () => {
       </div>
 
       <div className="text-center mb-20" ref={titleAnimation.ref}>
-        <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F9DFDF] border border-[#F5AFAF] shadow-sm mb-8 transition-all duration-1000 ${
-          titleAnimation.isIntersecting
-            ? "opacity-100 transform translate-y-0"
-            : "opacity-0 transform translate-y-10"
-        }`}>
+        <div 
+          className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border shadow-sm mb-8 transition-all duration-1000 ${
+            titleAnimation.isIntersecting
+              ? "opacity-100 transform translate-y-0"
+              : "opacity-0 transform translate-y-10"
+          }`}
+          style={{ backgroundColor: COLORS.primaryLight, borderColor: COLORS.primary }}
+        >
           <div className="relative">
-            <div className="w-2 h-2 rounded-full bg-[#F5AFAF] animate-pulse"></div>
-            <div className="absolute inset-0 w-2 h-2 rounded-full bg-[#F5AFAF] animate-ping opacity-30"></div>
+            <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.primary }}></div>
+            <div className="absolute inset-0 w-2 h-2 rounded-full animate-ping opacity-30" style={{ backgroundColor: COLORS.primary }}></div>
           </div>
-          <span className="text-sm font-semibold text-[#7C2D2D]">
+          <span className="text-sm font-semibold" style={{ color: COLORS.primaryDark }}>
             Certifications
           </span>
         </div>
@@ -130,19 +155,20 @@ const CertSection = () => {
               : "opacity-0 transform translate-y-10"
           }`}
         >
-          <span className="text-[#7C2D2D]">Certificates & </span>
-          <span className="text-[#F5AFAF] relative">
+          <span style={{ color: COLORS.primaryDark }}>Certificates & </span>
+          <span className="relative" style={{ color: COLORS.primary }}>
             Training
-            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-[#F5AFAF] rounded-full opacity-30"></div>
+            <div className="absolute -bottom-2 left-0 right-0 h-1 rounded-full opacity-30" style={{ backgroundColor: COLORS.primary }}></div>
           </span>
         </h1>
 
         <p
-          className={`text-xl text-[#7C2D2D] max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${
+          className={`text-xl max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${
             titleAnimation.isIntersecting
               ? "opacity-100 transform translate-y-0"
               : "opacity-0 transform translate-y-10"
           }`}
+          style={{ color: COLORS.primaryDark }}
         >
           Professional certifications and specialized training in psychology and mental health
         </p>
@@ -160,14 +186,18 @@ const CertSection = () => {
             return (
               <div
                 key={cert.id}
-                className={`group relative ${colors.bg} backdrop-blur-md border ${colors.border} rounded-2xl overflow-hidden transform transition-all duration-700 hover:scale-105 hover:-translate-y-2 shadow-xl hover:shadow-2xl max-w-md w-full ${
+                className={`group relative backdrop-blur-md border rounded-2xl overflow-hidden transform transition-all duration-700 hover:scale-105 hover:-translate-y-2 shadow-xl hover:shadow-2xl max-w-md w-full ${
                   isVisible
                     ? "opacity-100 translate-y-0 scale-100"
                     : "opacity-0 translate-y-20 scale-95"
                 }`}
                 style={{
+                  backgroundColor: colors.bg,
+                  borderColor: colors.border,
                   transitionDelay: isVisible ? `${index * 150}ms` : "0ms",
                 }}
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = colors.borderHover}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = colors.border}
               >
                 <div className="relative h-80 overflow-hidden">
                   <img
@@ -178,24 +208,26 @@ const CertSection = () => {
                   <div className="absolute inset-0 bg-black opacity-80"></div>
 
                   <div
-                    className={`absolute top-4 left-4 w-12 h-12 ${colors.iconBg} rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20`}
+                    className="absolute top-4 left-4 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20"
+                    style={{ backgroundColor: colors.iconBg }}
                   >
-                    {React.createElement(getIcon(cert.iconName), { className: "text-2xl text-[#F5AFAF]" })}
+                    {React.createElement(getIcon(cert.iconName), { className: "text-2xl", style: { color: COLORS.primary } })}
                   </div>
 
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-2xl font-bold text-white mb-3">
+                    <h3 className="text-2xl font-bold mb-3" style={{ color: COLORS.white }}>
                       {cert.title}
                     </h3>
                   </div>
                 </div>
 
-                <div className="p-6 bg-white backdrop-blur-sm">
+                <div className="p-6 backdrop-blur-sm" style={{ backgroundColor: COLORS.white }}>
                   <a
                     href={cert.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 px-6 py-3 bg-[#F5AFAF] text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 group/link"
+                    className="flex items-center justify-center gap-3 px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 group/link"
+                    style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
                   >
                     <span>View Certificate</span>
                     <svg
@@ -221,13 +253,15 @@ const CertSection = () => {
 
       {previewImage && (
         <div
-          className="fixed inset-0 bg-white/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}
           onClick={closePreview}
         >
           <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
             <button
               onClick={closePreview}
-              className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/20 transition-all duration-300 z-10"
+              className="absolute top-4 right-4 backdrop-blur-sm p-2 rounded-full hover:bg-white/20 transition-all duration-300 z-10"
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', color: COLORS.white }}
             >
               <svg
                 className="w-6 h-6"
@@ -252,8 +286,8 @@ const CertSection = () => {
                 onClick={(e) => e.stopPropagation()}
               />
 
-              <div className="absolute bottom-0 left-0 right-0 bg-[#7C2D2D]/80 p-6 rounded-b-lg">
-                <h3 className="text-white text-xl font-bold text-center">
+              <div className="absolute bottom-0 left-0 right-0 p-6 rounded-b-lg" style={{ backgroundColor: `${COLORS.primaryDark}CC` }}>
+                <h3 className="text-xl font-bold text-center" style={{ color: COLORS.white }}>
                   Certificate of {previewImage.title}
                 </h3>
               </div>

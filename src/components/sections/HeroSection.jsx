@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProfileCard from "../ProfileCard/ProfileCard";
 import ShinyText from "../common/text/ShinyText/ShinyText";
 import BlurText from "../common/text/BlurText/BlurText";
-import { SOCIAL_LINKS } from "../../constants";
+import { SOCIAL_LINKS, COLORS } from "../../constants";
 import CurvedLoop from "../CurvedLoop/CurvedLoop";
 
 const HeroSection = () => {
@@ -22,13 +22,13 @@ const HeroSection = () => {
           <div 
             className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-4 blur-3xl float-animation"
             style={{ 
-              backgroundColor: '#F9DFDF'
+              backgroundColor: COLORS.primaryLight
             }}
           />
           <div 
             className="absolute bottom-1/4 left-1/3 w-64 h-64 rounded-full opacity-3 blur-2xl float-animation-reverse"
             style={{ 
-              backgroundColor: '#F5AFAF'
+              backgroundColor: COLORS.primary
             }}
           />
         </div>
@@ -40,10 +40,11 @@ const HeroSection = () => {
               isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
             }`}>
               
-              <div 
-                className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-6 sm:mb-8 glass-card bg-[#F9DFDF]"
+              <div
+                className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-6 sm:mb-8 glass-card"
                 style={{
-                  border: '1px solid #F5AFAF'
+                  backgroundColor: COLORS.white,
+                  border: `1px solid ${COLORS.primary}`
                 }}
               >
                 <img
@@ -53,16 +54,16 @@ const HeroSection = () => {
                 />
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#10B981' }}></div>
-                  <span className="text-xs sm:text-sm font-medium" style={{ color: '#7C2D2D' }}>
+                  <span className="text-xs sm:text-sm font-medium" style={{ color: COLORS.primaryDark }}>
                     Psychology for a better tomorrow
                   </span>
                 </div>
               </div>
 
               <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight" style={{ color: "#7C2D2D" }}>
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight" style={{ color: COLORS.primaryDark }}>
                   Hi! I'm{" "}
-                  <span style={{ color: "#F5AFAF" }}>
+                  <span style={{ color: COLORS.primary }}>
                     Nawra
                   </span>
                 </h1>
@@ -83,9 +84,11 @@ const HeroSection = () => {
                 isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-8"
               }`}>
                 <button
-                  className="group relative glass-card px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-2xl overflow-hidden transition-all duration-300 hover-lift focus-ring bg-[#F5AFAF] w-full sm:w-auto"
+                  className="group relative glass-card px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-2xl overflow-hidden transition-all duration-300 hover-lift focus-ring w-full sm:w-auto text-center"
                   style={{ 
-                    color: '#FFFFFF'
+                    backgroundColor: COLORS.white,
+                    border: `2px solid ${COLORS.primaryLight}`,
+                    color: COLORS.primary
                   }}
                 >
                   <ShinyText
@@ -98,17 +101,18 @@ const HeroSection = () => {
 
                 <a
                   href="#portfolio"
-                  className="group glass-card px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-2xl font-semibold transition-all duration-300 hover-lift focus-ring bg-white text-sm sm:text-base w-full sm:w-auto text-center"
-                  style={{ 
-                    border: '2px solid #F9DFDF',
-                    color: '#F5AFAF'
+                  className="glass-card px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-2xl transition-all duration-300 hover-lift focus-ring w-full sm:w-auto text-center"
+                  style={{
+                    backgroundColor: COLORS.white,
+                    border: `2px solid ${COLORS.primaryLight}`,
+                    color: COLORS.primary
                   }}
                 >
                   <ShinyText
                     text="Explore Portfolio"
                     disabled={false}
                     speed={3}
-                    className="group-hover:text-white transition-colors duration-300"
+                    className="relative z-10 font-semibold text-sm sm:text-base"
                   />
                 </a>
               </div>
@@ -118,7 +122,7 @@ const HeroSection = () => {
             <div className={`order-1 lg:order-2 flex justify-center lg:justify-end transition-all duration-1000 delay-600 ${
               isVisible ? "opacity-100 transform translate-x-0" : "opacity-0 transform translate-x-10"
             }`}>
-              <div className="w-full max-w-[280px] sm:max-w-xs md:max-w-sm">
+              <div className="w-full max-w-[280px] sm:max-w-xs md:max-w-sm overflow-visible pt-6 sm:pt-4">
                 <ProfileCard
                   name="Nawra Danisha"
                   title="Psychology Student"
@@ -137,7 +141,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className={`mt-8 sm:mt-12 transition-all duration-1000 delay-1500 ${
+          <div className={`mt-4 sm:mt-6 transition-all duration-1000 delay-1500 ${
             isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-8"
           }`}>
             <div className="relative">
